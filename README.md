@@ -1,6 +1,6 @@
 # EREC THRIVE Intelligence System
 
-**Eco Reset Edge Connect (EREC)** | Kampala, Uganda | [ecoresetedge.org](https://ecoresetedge.org)
+**Eco Reset Edge Connect (EREC)** | Kampala, Uganda | [ecoresetedge.org](https://ecoresetedge.com)
 
 > An open-source, AI-powered climate-health data platform that translates environmental risk data into actionable intelligence for frontline health workers, local governments, and humanitarian actors in Uganda's most climate-vulnerable communities.
 
