@@ -200,5 +200,5 @@ MIT License — see [LICENSE](LICENSE) for details.
 ## Contact
 
 - **Email:** ecoresetedge@gmail.com
-- **Website:** [ecoresetedge.org](https://ecoresetedge.org)
+- **Website:** [ecoresetedge.org](https://ecoresetedge.com)
 - **GitHub:** [@FNanfuka](https://github.com/FNanfuka)
