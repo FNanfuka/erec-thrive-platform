@@ -1,1 +1,0 @@
-# EREC THRIVE Intelligence System
