@@ -1,59 +1,90 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# EREC THRIVE Intelligence System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**Eco Reset Edge Connect (EREC)** | Kampala, Uganda | [ecoresetedge.com](https://ecoresetedge.com)
 
-## About Laravel
+> An open-source climate-health intelligence platform that translates environmental risk data into actionable alerts for frontline health workers, local governments, and communities in Uganda's most climate-vulnerable districts.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
+![PHP](https://img.shields.io/badge/PHP-Laravel-blue.svg)
+![Open Source](https://img.shields.io/badge/Open%20Source-Yes-brightgreen.svg)
+![UNICEF Venture Fund](https://img.shields.io/badge/UNICEF-Venture%20Fund%20Applicant-00AEEF.svg)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## The problem
 
-## Learning Laravel
+Uganda's climate-vulnerable communities — including children in refugee settlements, urban informal settlements, and rural districts — face compounding climate and health risks with no accessible, real-time data system to guide local decision-making. Health facilities lack tools to anticipate climate-driven disease surges, and local governments operate without vulnerability data linking environmental exposure to child health outcomes.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## The solution
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+THRIVE monitors environmental signals across Uganda and translates them into tiered, actionable alerts for schools, health facilities, and local governments — with a distinct child-health screening layer that flags risk pathways (flooding, mosquito-borne disease, respiratory aggravation, heat stress) without overstating certainty.
 
-## Laravel Sponsors
+The live prototype currently monitors **494 locations across 137 districts**.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Current status (honest, as of this build)
 
-### Premium Partners
+THRIVE is a working prototype, not a finished product. We believe in being precise about what's built versus planned:
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+| Component | Status |
+|---|---|
+| Weather/heat/air-quality ingestion (Open-Meteo) | **Live** |
+| Flood risk ingestion (CHIRPS v3 via ClimateSERV) | **Live** |
+| Air quality connector (OpenAQ v3) | **Live** (optional, authenticated) |
+| Facility vulnerability screening | **Live** — transparent weighted-formula ("screening-v1"), not yet a trained ML model |
+| Rule-based alert engine (green/amber/red) | **Live**, tested |
+| Child Climate Risk panel | **Live** |
+| Data Health transparency view | **Live** |
+| DHIS2 health-outcome integration | Coded, disabled by default — pending formal Ministry of Health / district authorisation |
+| Machine learning (Random Forest w/ SHAP for vulnerability scoring) | **Planned**, not yet implemented |
+| Disease-outbreak forecasting (LSTM+XGBoost) | **Planned** — "readiness state only," no live signal yet |
 
-## Contributing
+We would rather document this precisely than overstate progress.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Tech stack
 
-## Code of Conduct
+- **Backend:** Laravel (PHP), scheduled jobs and Artisan console commands for data ingestion
+- **Frontend:** Vite-bundled assets, Leaflet.js for map rendering, Blade templates
+- **Database:** Relational (SQLite for local development)
+- **Testing:** Pest/PHPUnit — 21+ feature tests covering fail-safe behaviour, data-safety checks, and the alert lifecycle
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Data sources
 
-## Security Vulnerabilities
+| Source | Data type | Status |
+|---|---|---|
+| [Open-Meteo](https://open-meteo.com/) | Temperature, rainfall, air quality | Live |
+| [CHIRPS v3](https://www.chc.ucsb.edu/data/chirps) (via ClimateSERV) | Precipitation anomalies / flood risk | Live |
+| [OpenAQ](https://openaq.org/) | Air quality (PM2.5, PM10) | Live, optional |
+| [OpenStreetMap](https://openstreetmap.org/) | Health facility candidate locations | Live |
+| [Uganda DHIS2](https://dhis2.org/) | Aggregate health-outcome indicators | Coded, pending authorisation |
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Data safeguarding
+
+- No personally identifiable information or individual-level children's data is collected or stored.
+- Facility-level metadata (e.g. "children served") is aggregate, not individual records.
+- Every derived signal is stored with source, timestamp, geographic precision, and confidence.
+- The health-outcomes API explicitly rejects any child-identifying fields (enforced and tested).
+- The Child Climate Risk panel is explicitly labelled as screening support — not a diagnosis, flood warning, or clinical prediction.
+
+## Community grounding — THRIVE programme
+
+The platform is built on and tested through EREC's active THRIVE community programme, which works with 300+ adolescents and youth across climate-vulnerable communities in Kampala and Lira. This gives THRIVE a real-world pilot environment, community-validated problem framing, and direct integration with local health facilities and government structures.
+
+## Open source commitment
+
+This platform is released under the **MIT License**. All code and documentation are freely available for reuse and adaptation by other governments, NGOs, and community organisations.
+
+## About EREC
+
+**Eco Reset Edge Connect (EREC)** is a youth- and women-centred climate innovation initiative working at the intersection of climate resilience, community health, and digital data systems in Uganda.
+
+**Founder:** Nanfuka Fatuma — Data Scientist, MERL practitioner, MSc candidate in Data Science & Analytics (Uganda Christian University).
+
+## Contact
+
+- **Email:** ecoresetedge@gmail.com
+- **Website:** [ecoresetedge.com](https://ecoresetedge.com)
+- **GitHub:** [@FNanfuka](https://github.com/FNanfuka)
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+MIT License — see [LICENSE](LICENSE) for details.
