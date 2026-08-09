@@ -1,0 +1,10 @@
+{
+  "name": "THRIVE Climate Health Intelligence",
+  "short_name": "THRIVE",
+  "start_url": "/dashboard",
+  "display": "standalone",
+  "background_color": "#f7f5ec",
+  "theme_color": "#063f35",
+  "description": "National climate and health decision support for Uganda.",
+  "icons": []
+}
